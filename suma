@@ -1,0 +1,27 @@
+List<Integer> source = Arrays.asList(1,2,3);
+List<Integer> dest = Arrays.asList(4,5,6);
+Collections.copy(dest, source);
+Copy
+In the above example, all the previous elements in the dest list were overwritten because both lists have the same size.
+
+If the destination list size is larger than the source:
+
+List<Integer> source = Arrays.asList(1, 2, 3);
+List<Integer> dest = Arrays.asList(5, 6, 7, 8, 9, 10);
+Collections.copy(dest, source);
+Copy
+Here, just the first three items were overwritten, while the rest of the elements in the list were conserved.
+
+6. Using Java 8
+This version of Java expands our possibilities by adding new tools. The one we'll explore in the following examples is Stream:
+
+List<String> copy = list.stream()
+  .collect(Collectors.toList());
+Copy
+The main advantage of this option is the ability to use skip and filters. In the next example, we'll skip the first element:
+
+List<String> copy = list.stream()
+  .skip(1)
+  .collect(Collectors.toList());
+Copy
+It's also possible to filter by the length
